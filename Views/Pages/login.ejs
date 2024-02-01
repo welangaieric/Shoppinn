@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login and Register Page</title>
+</head>
+<body>
+
+<div class="main-login-container">
+    <div class="inner-container left-container">
+        <h1>Welcome!</h1>
+        <p>This is a welcome message.</p>
+        <button id="showSignInBtn" onclick="showSignInForm()">Sign In</button>
+
+        <!-- Sign-in form -->
+        <div class="sign-in-form">
+            <label for="username">Username</label>
+            <i class="icon fas fa-user"></i>
+            <input type="text" id="username" name="username" placeholder="">
+            <label for="password">Password</label>
+            <i class="icon fas fa-key"></i>
+            <input type="password" id="password" name="password" placeholder=""><br>
+            <button type="button">Sign in</button>
+    </div>
+    </div>
+
+    <div class="inner-container right-container">
+        <h1>Create Account</h1>
+        <label for="newUsername">Username</label>
+        <i class="icon fas fa-user"></i>
+        <input type="text" id="newUsername" name="newUsername" placeholder="">
+        <label for="newEmail">Email</label>
+        <i class="icon fas fa-envelope"></i>
+        <input type="email" id="newEmail" name="newEmail" placeholder="">
+        <label for="newPassword">Password</label>
+        <i class="icon fas fa-key"></i>
+        <input type="password" id="newPassword" name="newPassword" placeholder=""><br>
+        <button type="button">Create Account</button>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+
+</body>
+</html>

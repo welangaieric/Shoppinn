@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckOut</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+
+ 
+    <div class="main-checkout-container">
+
+     
+
+        <!-- Sub-Container 1 -->
+        <form action="#" method="post" class="sub-container" id="checkoutForm">
+          <h2>Checkout</h2>
+
+          <a href="#" class="back-to-shopping-link">Back to Shopping</a>
+
+          <a href="#" class="show-cart-btn" onclick="toggleCartVisibility()">Cart</a>
+          <div class="floating-cart" id="floatingCart">
+            <h2>Cart</h2>
+            <div class="cart-item">
+              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Product 1">
+              <div class="item-details">
+                <span class="item-name">Calvin Klein</span>
+      <div class="item-price">$20.00</div>
+                <div class="item-quantity">
+                  <div class="quantity-btn" onclick="decreaseQuantity(this)">-</div>
+                  <span class="quantity">1</span>
+                  <div class="quantity-btn" onclick="increaseQuantity(this)">+</div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="cart-item">
+              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Product 2">
+              <div class="item-details">
+                <span class="item-name">Calvin Klein</span>
+                <div class="item-price">$15.00</div>
+                <div class="item-quantity">
+                  <div class="quantity-btn" onclick="decreaseQuantity(this)">-</div>
+                  <span class="quantity">1</span>
+                  <div class="quantity-btn" onclick="increaseQuantity(this)">+</div>
+                </div>
+              </div>
+            </div>
+            <!-- Add more cart items as needed -->
+            <div class="cart-total">Cart Total: <span class="amount-details">$35.00</span></div>
+            <a href="#" class="checkout-btn">Checkout</a>
+          </div>
+        
+            
+        
+           <!---->  
+          
+          <div class="shipping-details">
+            <h3>Shipping Details</h3>
+            <p id="shippingAddress">Shipping Address: <span contenteditable="true">123 Main St</span></p>
+            <p id="shippingMethod">Shipping Method: <span contenteditable="true">Standard Shipping</span></p>
+            <a href="#" class="edit-link" onclick="editDetails('shippingAddress', 'shippingMethod')">Edit</a>
+          </div>
+        
+          <div class="line"></div>
+        
+          <div class="delivery-details">
+            <h3>Delivery Details</h3>
+            <p id="deliveryDate">Estimated Delivery Date: <span contenteditable="true">January 30, 2024</span></p>
+            <p id="deliveryStatus">Delivery Status: <span contenteditable="true">In Transit</span></p>
+            <a href="#" class="edit-link" onclick="editDetails('deliveryDate', 'deliveryStatus')">Edit</a>
+          </div>
+        
+          <div class="line"></div>
+        
+          <div class="payment-details">
+            <h3>Payment Details</h3>
+            <p id="paymentMethod">Payment Method: <span contenteditable="true">Credit Card</span></p>
+            <p id="totalAmount">Total Amount: <span contenteditable="true">$100.00</span></p>
+            <a href="#" class="edit-link" onclick="editDetails('paymentMethod', 'totalAmount')">Edit</a>
+          </div>
+  <div class="line"></div>
+
+  <h3>Everything look good?</h3>
+  <button type="button" class="button-33" onclick="placeOrder()" role="button">Place Order</button>
+</form>
+    
+        <!-- Sub-Container 2 -->
+        <div class="sub-container">
+          <h2>Order Summary</h2>
+          <div class="long-box">
+            <div class="image-container">
+              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
+            </div>
+          
+            <div class="line-vertical"></div>
+          
+            <div class="image-name-container">
+              <div class="image-name">Calvin Klein</div>
+            </div>
+          </div>
+
+          <div class="long-box">
+            <div class="image-container">
+              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
+            </div>
+          
+            <div class="line-vertical"></div>
+          
+            <div class="image-name-container">
+              <div class="image-name">Calvin Klein</div>
+            </div>
+          </div>
+
+          <div class="long-box">
+            <div class="image-container">
+              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
+            </div>
+          
+            <div class="line-vertical"></div>
+          
+            <div class="image-name-container">
+              <div class="image-name">Calvin Klein</div>
+            </div>
+          </div>
+          
+
+         
+<div class="amount-details subtotal">
+  <span class="label">Subtotal:</span>
+  <span class="amount">$100.00</span>
+</div>
+
+<div class="amount-details tax">
+  <span class="label">Tax(Calculated in Checkout):</span>
+  <span class="amount">$10.00</span>
+</div>
+
+<div class="amount-details shipping">
+  <span class="label">Shipping(Free standard over $):</span>
+  <span class="amount">$5.00</span>
+</div>
+
+<div class="amount-details line"></div>
+
+<div class="amount-details estimated-total">
+  <span class="label">Estimated Total:</span>
+  <span class="amount">$115.00</span>
+</div>
+
+          
+          </div>
+      </div>
+    
+      
+
+
+
+
+      <script src="/script.js"></script>
+</body>
+</html>
