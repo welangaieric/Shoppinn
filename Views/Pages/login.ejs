@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Login and Register Page</title>
 </head>
 <body>
@@ -19,11 +20,11 @@
         <div class="sign-in-form">
             <label for="username">Username</label>
             <i class="icon fas fa-user"></i>
-            <input type="text" id="username" name="username" placeholder="">
+            <input type="text" id="username" name="username" placeholder=""  required>
             <label for="password">Password</label>
             <i class="icon fas fa-key"></i>
-            <input type="password" id="password" name="password" placeholder=""><br>
-            <button type="button">Sign in</button>
+            <input type="password" id="password" name="password" placeholder="" required><br>
+            <button type="button" id="signInBtn">Sign in</button>
     </div>
     </div>
 
@@ -31,16 +32,17 @@
         <h1>Create Account</h1>
         <label for="newUsername">Username</label>
         <i class="icon fas fa-user"></i>
-        <input type="text" id="newUsername" name="newUsername" placeholder="">
+        <input type="text" id="newUsername" name="newUsername" placeholder="" required>
         <label for="newEmail">Email</label>
         <i class="icon fas fa-envelope"></i>
-        <input type="email" id="newEmail" name="newEmail" placeholder="">
+        <input type="email" id="newEmail" name="newEmail" placeholder="" required>
         <label for="newPassword">Password</label>
         <i class="icon fas fa-key"></i>
-        <input type="password" id="newPassword" name="newPassword" placeholder=""><br>
-        <button type="button">Create Account</button>
+        <input type="password" id="newPassword" name="newPassword" placeholder="" required><br>
+        <button type="button"  id="registerBtn">Create Account</button>
     </div>
 </div>
+
 
 <script src="/script.js"></script>
 

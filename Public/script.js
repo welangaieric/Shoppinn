@@ -1,12 +1,77 @@
 
 /*log in*/
-function showSignInForm() {
-    var signInForm = document.querySelector('.sign-in-form');
-    signInForm.style.display = 'block';
+
+
+  $(document).ready(function () {
+   
+    $("#registerBtn").on("click", function () {
+       
+        var newUsername = $("#newUsername").val();
+        var newEmail = $("#newEmail").val();
+        var newPassword = $("#newPassword").val();
+
+        
+        $.ajax({
+            url: 'http://localhost:3000/register',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ newUsername: newUsername, newEmail: newEmail, newPassword: newPassword }),
+            success: function (response) {
+                console.log(response);
+                alert(response.message);
+            },
+            error: function (error) {
+                console.error(error);
+                alert('Error during registration');
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+      
+      $("#signInBtn").on("click", function () {
+          
+          var username = $("#username").val();
+          var password = $("#password").val();
   
-    var signInBtn = document.getElementById('showSignInBtn');
-    signInBtn.style.display = 'none'; // Hide the "Sign In" button
-  }
+         
+          $.ajax({
+              url: 'http://localhost:3000/signin',
+              method: 'POST',
+              contentType: 'application/json',
+              data: JSON.stringify({ username: username, password: password }),
+              success: function (response) {
+                  if (response.success) {
+                    
+                      window.location.href = 'http://localhost:3000/index1?username=' + response.username;
+                  } else {
+                     
+                      console.log(response);
+  
+                      
+                      var errorMessage = response.message || 'Sign-in failed. Please try again.';
+                      alert(errorMessage);
+                  }
+              },
+              error: function (error) {
+                  console.error(error);
+                  alert('Error during sign-in');
+              }
+          });
+      });
+  });
+  
+
+    
+    
+    $("#showSignInBtn").on("click", function () {
+        $(".sign-in-form").toggle();
+        $(this).hide();
+    });
+});
+
+
   /*checkout editing script*/
   function editDetails(contentId1, contentId2) {
     
@@ -33,7 +98,7 @@ function showSignInForm() {
     alert('Order placed successfully!');
   }
   /*cart*/
-  
+
   function toggleCartVisibility() {
     var cart = document.getElementById('floatingCart');
     cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
@@ -52,3 +117,62 @@ function showSignInForm() {
       quantitySpan.textContent = currentQuantity - 1;
     }
   }
+
+  /*product page*/
+  $(function(){
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+    function startCountdown(durationInSeconds) {
+        let timerElement = document.getElementById('timer');
+        let countdown = durationInSeconds;
+  
+        function updateTimer() {
+          const hours = Math.floor(countdown / 3600);
+          const minutes = Math.floor((countdown % 3600) / 60);
+          const seconds = countdown % 60;
+  
+          timerElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  
+          if (countdown <= 0) {
+            clearInterval(timerInterval);
+            timerElement.textContent = "00:00:00"; // Optional: Show a specific message when the countdown reaches zero
+          } else {
+            countdown--;
+          }
+        }
+  
+        // Initial call to set up the timer
+        updateTimer();
+  
+        // Update the timer every second
+        let timerInterval = setInterval(updateTimer, 1000);
+      }
+  
+      // Start the countdown with a duration of 72 hours (72 * 60 * 60 seconds)
+      startCountdown(72 * 60 * 60);
+    // const similarElements = document.querySelectorAll('.product');
+
+    // // Calculate the width based on the number of similar elements
+    // const containerWidth = document.querySelector('.products').offsetWidth;
+    // const calculatedWidth = containerWidth / similarElements.length;
+  
+    // // Set the width for each similar element
+    // similarElements.forEach(element => {
+    //   element.style.width = `${calculatedWidth}px`;
+    // });
+})
+
