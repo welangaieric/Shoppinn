@@ -287,7 +287,7 @@ nav{
     width: 100%;
     display: flex;
     gap: 10px;
-    background-image: url('../assets/Rectangle7.png');
+    background-image: url('../images/assets/Rectangle7.png');
 
   }
   .deals-container{
@@ -340,22 +340,7 @@ nav{
     gap: 20px;
     font-weight: 500;
   }
-@media screen and (min-width:996px) {
-    .search_bar{
-        width: 40%;
-    }
-    .hero-section{
-        height: 550px;
-    }
-    .owl-stage{
-        height: 100%;
-        width: 100% !important;
-        display: flex;
-    }
-    .owl-item{
-        width: 100% !important;
-    }
-}
+
 
 /*cart*/
 
@@ -366,7 +351,7 @@ nav{
     position: fixed;
     top: 0;
     right: 0;
-    width:50%; 
+    width:100%; 
     min-height: 40vh;
     background-color: #e0e0e0;
     border-radius: 8px;
@@ -571,3 +556,23 @@ nav{
         height: 20px;
         width: 100px;
     }
+    @media screen and (min-width:996px) {
+      .search_bar{
+          width: 40%;
+      }
+      .hero-section{
+          height: 550px;
+      }
+      .owl-stage{
+          height: 100%;
+          width: 100% !important;
+          display: flex;
+      }
+      .owl-item{
+          width: 100% !important;
+      }
+      .floating-cart{
+        width: 20%;
+      }
+     
+  }

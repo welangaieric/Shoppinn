@@ -5,19 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="/style1.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Login and Register Page</title>
 </head>
 <body>
+    <header >
+        <nav>
+            <div class="brand text-white">
+                <div class="brand-name">
+                    <h4>Shoppin</h4>
+                    <!-- <i cla></i> -->
+                </div>
+                <div class="toggle_btn">
 
+                </div>
+            </div>
+            
+            <div class="links text-white">
+                
+                <a href="/"><i class="bi bi-house-fill"></i> Home</a><br>
+            </div>
+        </nav>
+    </header>
 <div class="main-login-container">
     <div class="inner-container left-container">
-        <h1>Welcome!</h1>
-        <p>This is a welcome message.</p>
+       
         <button id="showSignInBtn" onclick="showSignInForm()">Sign In</button>
 
         <!-- Sign-in form -->
         <div class="sign-in-form">
+            <h1>Welcome!</h1>
+            <p>This is a welcome message.</p>
             <label for="username">Username</label>
             <i class="icon fas fa-user"></i>
             <input type="text" id="username" name="username" placeholder=""  required>
@@ -25,21 +47,23 @@
             <i class="icon fas fa-key"></i>
             <input type="password" id="password" name="password" placeholder="" required><br>
             <button type="button" id="signInBtn">Sign in</button>
-    </div>
+        </div>
     </div>
 
     <div class="inner-container right-container">
         <h1>Create Account</h1>
-        <label for="newUsername">Username</label>
-        <i class="icon fas fa-user"></i>
-        <input type="text" id="newUsername" name="newUsername" placeholder="" required>
-        <label for="newEmail">Email</label>
-        <i class="icon fas fa-envelope"></i>
-        <input type="email" id="newEmail" name="newEmail" placeholder="" required>
-        <label for="newPassword">Password</label>
-        <i class="icon fas fa-key"></i>
-        <input type="password" id="newPassword" name="newPassword" placeholder="" required><br>
-        <button type="button"  id="registerBtn">Create Account</button>
+        <div class="form-container">
+            <label for="newUsername">Username</label>
+            <i class="icon fas fa-user"></i>
+            <input type="text" id="newUsername" name="newUsername" placeholder="" required>
+            <label for="newEmail">Email</label>
+            <i class="icon fas fa-envelope"></i>
+            <input type="email" id="newEmail" name="newEmail" placeholder="" required>
+            <label for="newPassword">Password</label>
+            <i class="icon fas fa-key"></i>
+            <input type="password" id="newPassword" name="newPassword" placeholder="" required><br>
+            <button type="button"  id="registerBtn">Create Account</button>
+        </div>  
     </div>
 </div>
 

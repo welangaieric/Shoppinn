@@ -1,5 +1,19 @@
 
   $(document).ready(function () {
+    if($('#fixed-header')){
+      window.onscroll = function() {
+        var header = document.getElementById("fixed-header");
+  
+        var scrollPosition = window.scrollY 
+    
+      
+        if (scrollPosition > 0) {
+            header.classList.add('fixed-header')
+        } else {
+            header.classList.remove("fixed-header");
+        }
+    };
+    }
    
     $("#registerBtn").on("click", function () {
        
