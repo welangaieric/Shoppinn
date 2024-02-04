@@ -1,7 +1,4 @@
 
-/*log in*/
-
-
   $(document).ready(function () {
    
     $("#registerBtn").on("click", function () {
@@ -25,10 +22,7 @@
                 alert('Error during registration');
             }
         });
-    });
 
-
-    $(document).ready(function () {
       
       $("#signInBtn").on("click", function () {
           
@@ -69,7 +63,7 @@
         $(".sign-in-form").toggle();
         $(this).hide();
     });
-});
+
 
 
   /*checkout editing script*/
@@ -98,11 +92,18 @@
     alert('Order placed successfully!');
   }
   /*cart*/
+  //==open and close cart==//
+  var cart = $('#floatingCart');
+  $('.show-cart-btn').on('click',()=>{
+    cart.fadeIn()
+    $('#cartBackdrop').fadeIn()
+  })
+  $('.close-cart-btn').on('click',()=>{
+    $('#cartBackdrop').fadeOut()
+    cart.fadeOut()
+  })
+  //===////
 
-  function toggleCartVisibility() {
-    var cart = document.getElementById('floatingCart');
-    cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
-  }
   
   function increaseQuantity(btn) {
     var quantitySpan = btn.parentNode.querySelector('.quantity');
@@ -119,7 +120,7 @@
   }
 
   /*product page*/
-  $(function(){
+
     $('.owl-carousel').owlCarousel({
         loop:true,
         margin:10,
@@ -136,6 +137,7 @@
             }
         }
     })
+    //============count down =========================///
     function startCountdown(durationInSeconds) {
         let timerElement = document.getElementById('timer');
         let countdown = durationInSeconds;
@@ -164,6 +166,19 @@
   
       // Start the countdown with a duration of 72 hours (72 * 60 * 60 seconds)
       startCountdown(72 * 60 * 60);
+      /// ==================fixed header =================////////
+      window.onscroll = function() {
+        var header = document.getElementById("fixed-header");
+  
+        var scrollPosition = window.scrollY 
+    
+      
+        if (scrollPosition > 0) {
+            header.classList.add('fixed-header')
+        } else {
+            header.classList.remove("fixed-header");
+        }
+    };
     // const similarElements = document.querySelectorAll('.product');
 
     // // Calculate the width based on the number of similar elements
