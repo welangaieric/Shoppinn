@@ -1,8 +1,10 @@
 const express = require('express');
+const crudRoutes = require('./Routes/CRUD');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const cors = require('cors')
 const morgan = require('morgan')
+
 // const bcrypt = require('bcrypt');
 
 const app = express();
@@ -30,6 +32,7 @@ db.connect((err) => {
 });
 
 app.use(express.static('public'));
+app.use('/api', crudRoutes);
 
 app.set('view engine', 'ejs');
 
@@ -53,9 +56,6 @@ app.get('/login', (req, res) => {
 
   app.post('/register', (req, res) => {
     const { newUsername, newEmail, newPassword } = req.body;
-
-   
-  
     
     
     const checkQuery = 'SELECT * FROM users WHERE username = ? OR email = ?';
@@ -100,6 +100,8 @@ app.get('/login', (req, res) => {
       }
     });
   });
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
