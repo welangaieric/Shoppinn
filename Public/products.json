@@ -1,0 +1,100 @@
+[
+    {
+        "itemId": 1,
+        "itemName": "Gold Jewelery",
+        "itemType": "set",
+        "itemDescription": "Elegant gold bracelet with intricate design with a gold necklace and earings",
+        "itemPrice": 45.99,
+        "itemImage": "/images/assets/jewelreyset.png"
+    },
+    {
+        "itemId": 2,
+        "itemName": "Silver Bracelet",
+        "itemType": "Bracelet",
+        "itemDescription": "Simple and stylish silver bracelet for everyday wear.",
+        "itemPrice": 19.99,
+        "itemImage": "/images/assets/silver_bracelet.png"
+    },
+    {
+        "itemId": 3,
+        "itemName": "Diamond Chain",
+        "itemType": "Chain",
+        "itemDescription": "Luxurious diamond-studded chain for special occasions.",
+        "itemPrice": 49.99,
+        "itemImage": "/images/assets/diamond_chain.png"
+    },
+    {
+        "itemId": 4,
+        "itemName": "Leather bracelet",
+        "itemType": "bracelet",
+        "itemDescription": "Casual and trendy leather bracelet with braided leather strap and various pendants.",
+        "itemPrice": 29.99,
+        "itemImage": "/images/assets/leather_bracelet.png"
+    },
+    {
+        "itemId": 5,
+        "itemName": "Sapphire Ring",
+        "itemType": "Ring",
+        "itemDescription": "Stunning sapphire ring with a classic design.",
+        "itemPrice": 39.99,
+        "itemImage": "/images/assets/sapphire_ring.png"
+    },
+    {
+        "itemId": 6,
+        "itemName": "Rose Gold Ring",
+        "itemType": "Ring",
+        "itemDescription": "Chic rose gold ring perfect for any occasion.",
+        "itemPrice": 34.99,
+        "itemImage": "/images/assets/rose_gold_ring.png"
+    },
+    {
+        "itemId": 7,
+        "itemName": "Diamond Ring",
+        "itemType": "Ring",
+        "itemDescription": "Timeless Diamond ring with a modern twist.",
+        "itemPrice": 27.99,
+        "itemImage": "/images/assets/ring1.png"
+    },
+    {
+        "itemId": 8,
+        "itemName": "Chronograph Watch",
+        "itemType": "Watch",
+        "itemDescription": "Stylish chronograph watch with multiple dials.",
+        "itemPrice": 79.99,
+        "itemImage": "/images/assets/chronograph_watch.png"
+    },
+    {
+        "itemId": 9,
+        "itemName": "Leather Strap Watch",
+        "itemType": "Watch",
+        "itemDescription": "Classic leather strap watch for a timeless look.",
+        "itemPrice": 59.99,
+        "itemImage": "/images/assets/leather_watch.png"
+    },
+    {
+        "itemId": 10,
+        "itemName": "Digital Sport Watch",
+        "itemType": "Watch",
+        "itemDescription": "Durable and functional digital sport watch.",
+        "itemPrice": 49.99,
+        "itemImage": "/images/assets/digital_watch.png"
+    },
+    {
+        "itemId": 11,
+        "itemName": "Diamond Earring",
+        "itemType": "Earring",
+        "itemDescription": "Single diamond stud earring for a touch of elegance.",
+        "itemPrice": 39.99,
+        "itemImage": "/images/assets/diamond_earring.png"
+    },
+    {
+        "itemId": 12,
+        "itemName": "Rolex watch",
+        "itemType": "Watch",
+        "itemDescription": "Classic gold rolex chain strap watch for a timeless look.",
+        "itemPrice": 59.99,
+        "itemImage": "/images/assets/rolexWatch.png"
+    }
+]
+
+  

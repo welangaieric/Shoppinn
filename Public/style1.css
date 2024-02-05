@@ -20,7 +20,7 @@ a:hover{
 input{
     border: none !important;
     background-color: none;
-    border-radius: 8px;
+    border-radius: 8px !important;
     outline: none;
 }
 input:focus{
@@ -74,16 +74,21 @@ nav{
     color: var(--dark-grey);
 }
 .brand{
-    width: 30%;
+    width: 20%;
     height: 100%;
     justify-content: space-between;
     align-items: center;
     display: flex;
     /* border: 1px solid; */
+    font-size: 1em;
 
 }
+.brand-name{
+  display: none;
+}
+
 .search_bar{
-    width:50%;
+    width:70%;
     /* border: 1px solid; */
     height: 100%;
     justify-content: center;
@@ -112,7 +117,7 @@ nav{
     border-radius: 8px;
 }
 .links{
-    width: 30%;
+    width: 20%;
     /* border: 1px solid; */
     height: 100%;
     justify-content: flex-end;
@@ -127,11 +132,58 @@ nav{
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     /* justify-content: center; */
     /* background-color: white; */
+  position: relative;
+}
+.loading{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
 
 }
+.loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+.loader::after,
+.loader::before {
+  content: '';  
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blue);
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  animation: animloader 2s ease-in-out infinite;
+}
+.loader::after {
+  animation-delay: 1s;
+}
+
+@keyframes animloader {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 1;
+}
+  50% {
+    transform: scale(1);
+    opacity: 0;
+}
+}
+
 .container{
     width: 90%;
     display: flex;
@@ -317,7 +369,7 @@ nav{
 
   }
   #timer {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
   }
   .contacts{
@@ -559,6 +611,9 @@ nav{
     @media screen and (min-width:996px) {
       .search_bar{
           width: 40%;
+      }
+      .brand-name{
+        display: initial;
       }
       .hero-section{
           height: 550px;

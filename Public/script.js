@@ -119,19 +119,64 @@
   //===////
 
   
-  function increaseQuantity(btn) {
-    var quantitySpan = btn.parentNode.querySelector('.quantity');
-    var currentQuantity = parseInt(quantitySpan.textContent);
-    quantitySpan.textContent = currentQuantity + 1;
-  }
-  
-  function decreaseQuantity(btn) {
-    var quantitySpan = btn.parentNode.querySelector('.quantity');
-    var currentQuantity = parseInt(quantitySpan.textContent);
-    if (currentQuantity > 1) {
-      quantitySpan.textContent = currentQuantity - 1;
-    }
-  }
+  $(document).ready(function() {
+    // URL to your JSON file
+    var jsonUrl = './products.json';
+
+    // Fetch the JSON data using AJAX
+    $.ajax({
+        url: jsonUrl,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            // Process the fetched data
+            $('.loading').fadeOut()
+            $('.products').html('')
+            displayCartItems(data);
+        },
+        error: function(error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+});
+
+function displayCartItems(cartItems) {
+    var cartItemsContainer = $('.products');
+
+    // Iterate through the cart items and display them
+    $.each(cartItems, function(index, item) {
+      let temp = `<div class="product-card" data.id=${item.itemId}>
+                    <div class="product-card-header">
+                      <img src="${item.itemImage}" alt="${item.itemName}">
+                    </div>
+                    <div class="product-details">
+                    <div class="product-title">${item.itemName}</div>
+                    <div class="product-price">$${item.itemPrice.toFixed(2)}</div>
+                    <div class="product-ratings">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                    </div>
+                    </div>
+                </div>`
+        var itemHtml = `
+            <div class="cart-item">
+                <div class="cart-item-header">
+                    <img src="${item.itemImage}" alt="${item.itemName}">
+                </div>
+                <div class="cart-item-body">
+                    <h6 class="item-name">${item.itemName}</h6>
+                    <p class="item-price">$${item.itemPrice.toFixed(2)}</p>
+                    <p class="item-description">${item.itemDescription}</p>
+                </div>
+            </div>
+        `;
+
+        cartItemsContainer.append(temp);
+    });
+}
 
   /*product page*/
 

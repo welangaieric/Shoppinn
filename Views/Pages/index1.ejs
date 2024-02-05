@@ -20,7 +20,7 @@
                     <!-- <i cla></i> -->
                 </div>
                 <div class="toggle_btn">
-
+                    <i class="bi bi-list"></i>
                 </div>
             </div>
             <form id="search" class="search_bar">
@@ -45,34 +45,35 @@
             </div>
           
             <div class="cart-body">
-                    <div class="cart-item">
-                        <div class="cart-item-header">
-                            <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Product 1">
-                        </div>
-                        <div class="cart-item-body">
-                            <h6 class="item-name">Calvin Klein</h6>
-                            <p class="item-price">$20.00</p>
-                            <div class="item-quantity">
-                            <div class="quantity-btn add-quantity" onclick="decreaseQuantity(this)">-</div>
+                <div class="cart-item">
+                    <div class="cart-item-header">
+                        <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Product 1">
+                    </div>
+                    <div class="cart-item-body">
+                        <h6 class="item-name">Calvin Klein</h6>
+                        <p class="item-price">$20.00</p>
+                        <div class="item-quantity">
+                            <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
                             <span class="quantity">1</span>
-                            <div class="quantity-btn decrease-quantity" onclick="increaseQuantity(this)">+</div>
-                            </div>
+                            <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
                         </div>
                     </div>
-                    <div class="cart-item">
-                        <div class="cart-item-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="cart-item-body">
-                            <h6 class="item-name">Calvin Klein</h6>
-                            <p class="item-price">$20.00</p>
-                            <div class="item-quantity">
-                            <div class="quantity-btn" onclick="decreaseQuantity(this)">-</div>
+                </div>
+                
+                <div class="cart-item">
+                    <div class="cart-item-header">
+                        <img src="images/assets/ring1.png" alt="Product 1">
+                    </div>
+                    <div class="cart-item-body">
+                        <h6 class="item-name">Diamond Ring</h6>
+                        <p class="item-price">$15.00</p>
+                        <div class="item-quantity">
+                            <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
                             <span class="quantity">1</span>
-                            <div class="quantity-btn" onclick="increaseQuantity(this)">+</div>
-                            </div>
+                            <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
                         </div>
                     </div>
+                </div>
                 <div class="cart-footer">
                     <div class="cart-total">Cart Total: <span class="amount-details">$35.00</span></div>
                     <a href="#" class="checkout-btn">Checkout</a>
@@ -83,484 +84,169 @@
     </section>
         <div class="cart-backdrop" id="cartBackdrop"></div>
 
-    <div class="wrapper">
-        <div class="container mt-3">
-            <div class="hero-section myCustomWrapper ">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                       <div class="carousel-item active">
-                        <img src="images/assets/Group 6.png" class="d-block w-100 " alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="images/assets/Group 7.png" class="d-block w-100 " alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="images/assets/rolex.png" class="d-block w-100 " alt="...">
-                      </div>
-                    </div>
-                    
-                  </div>
-             
+        <div class="wrapper">
+            <div class="loading">
+                <span class="loader"></span>
             </div>
-        </div>
-        <div class="container mt-3 ">
-            <h4>Popular Products</h4>
-        </div>
-        <div class="container product-container mt-3">
-            
-            <!-- Products container -->
-            <div class="products" id="products1">
+            <div class="container mt-3">
+                <div class="hero-section myCustomWrapper ">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                           <div class="carousel-item active">
+                            <img src="images/assets/Group 6.png" class="d-block w-100 " alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="images/assets/Group 7.png" class="d-block w-100 " alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="images/assets/rolex.png" class="d-block w-100 " alt="...">
+                          </div>
+                        </div>
+                        
+                      </div>
+                 
+                </div>
+            </div>
+            <div class="container mt-3 ">
+                <h4>Popular Products</h4>
+            </div>
+            <div class="container product-container mt-3">
                 <button class="nav-button nav-button-left" onclick="scrollProducts(-300, 'products1')">&lt;</button>
                 <button class="nav-button nav-button-right" onclick="scrollProducts(300, 'products1')">&gt;</button>
             
-                <!-- Product cards go here -->
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg"alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Ring</div>
-                    <div class="product-price">$19.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    <button class="add-to-cart-btn" onclick="addToCart('Diamond Ring', 19.99)">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/watch1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Rolex Watch</div>
-                    <div class="product-price">$29.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/ring2.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Ruby Ring</div>
-                    <div class="product-price">$9.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/chain1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Chain</div>
-                    <div class="product-price">$49.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/ring1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Ring</div>
-                    <div class="product-price">$19.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/ring1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Ring</div>
-                    <div class="product-price">$19.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/ring1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Ring</div>
-                    <div class="product-price">$19.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <img src="images/assets/ring1.png" alt="Product 1">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">Diamond Ring</div>
-                    <div class="product-price">$19.99</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-            </div>    
-        </div>
-        <div class="container  mt-3">
-            <h4>Featured Products</h4>
-        </div>
-        <div class="container product-container mt-3">
-            <div class="products" id="products2">
+                <!-- Products container -->
+                <div class="products" id="products1">
+                </div>    
+            </div>
+            <div class="container  mt-3">
+                <h4>Featured Products</h4>
+            </div>
+            <div class="container product-container mt-3">
                 <button class="nav-button nav-button-left" onclick="scrollProducts(-300, 'products2')">&lt;</button>
                 <button class="nav-button nav-button-right" onclick="scrollProducts(300, 'products2')">&gt;</button>
         
-            <!-- Product cards go here -->
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Ring</div>
-                <div class="product-price">$19.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
+                <div class="products" id="products2">
+                   
+                <!-- Product cards go here -->
+              
+            </div>  
             </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/watch1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Rolex Watch</div>
-                <div class="product-price">$29.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring2.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Ruby Ring</div>
-                <div class="product-price">$9.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/chain1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Chain</div>
-                <div class="product-price">$49.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Ring</div>
-                <div class="product-price">$19.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Ring</div>
-                <div class="product-price">$19.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Ring</div>
-                <div class="product-price">$19.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-header">
-                    <img src="images/assets/ring1.png" alt="Product 1">
-                </div>
-                <div class="product-details">
-                <div class="product-title">Diamond Ring</div>
-                <div class="product-price">$19.99</div>
-                <div class="product-ratings">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                </div>
-            </div>
-        </div>  
-        </div>
-        <div class="container mt-3 deals">
-            <div class="deals-container">
-               <div class="deals-header text-white">
-                    <h5>Deals of The Day</h5>
-                    <p id="timer"><strong>72:00:00</strong></p>
- 
-               </div>
-               <div class="deals-body product-container">
-                <div class="products" id="products3">
+            <div class="container mt-3 deals">
+                <div class="deals-container">
+                   <div class="deals-header text-white">
+                        <h5>Deals of The Day</h5>
+                        <p id="timer"><strong>72:00:00</strong></p>
+     
+                   </div>
+                   <div class="deals-body product-container">
                     <button class="nav-button nav-button-left" onclick="scrollProducts(-300, 'products3')">&lt;</button>
                     <button class="nav-button nav-button-right" onclick="scrollProducts(300, 'products3')">&gt;</button>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Ring</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/watch1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Rolex Watch</div>
-                        <div class="product-price">$29.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring2.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Ruby Ring</div>
-                        <div class="product-price">$9.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/chain1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Chain</div>
-                        <div class="product-price">$49.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Ring</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Ring</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Ring</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <img src="images/assets/ring1.png" alt="Product 1">
-                        </div>
-                        <div class="product-details">
-                        <div class="product-title">Diamond Ring</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-ratings">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9734;</span>
-                        </div>
-                        </div>
-                    </div>
-                </div> 
-               </div>
+                    <div class="products" id="products3">
+    
+                    </div> 
+                   </div>
+                </div>
+            </div>
+            <div class="container contacts mt-3">
+                <div>Shoppin</div>
+                <div class="socials">
+                    <span>
+                        <i class="bi bi-facebook"></i>
+                    </span>
+                    <span>
+                        <i class="bi bi-twitter"></i>
+                    </span>
+                    <span>
+                        <i class="bi bi-instagram"></i>
+                    </span>
+                </div>
+                <div class="footer-nav">
+                    <a href="#">About Us</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Products</a>
+                </div>
             </div>
         </div>
-        <div class="container contacts mt-3">
-            <div>Shoppin</div>
-            <div class="socials">
-                <span>
-                    <i class="bi bi-facebook"></i>
-                </span>
-                <span>
-                    <i class="bi bi-twitter"></i>
-                </span>
-                <span>
-                    <i class="bi bi-instagram"></i>
-                </span>
-            </div>
-            <div class="footer-nav">
-                <a href="#">About Us</a>
-                <a href="#">Support</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Products</a>
-            </div>
-        </div>
-    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/script.js"></script>
     <script>
- function scrollProducts(distance, containerId) {
-    const productsContainer = document.getElementById(containerId);
-    productsContainer.scrollBy({
-        left: distance,
-        behavior: 'smooth'
-    });
-}
+        function scrollProducts(distance, containerId) {
+            const productsContainer = document.getElementById(containerId);
+            productsContainer.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
+        // function increaseQuantity(btn) {
+        //     var quantitySpan = btn.parentNode.querySelector('.quantity');
+        //     var currentQuantity = parseInt(quantitySpan.textContent);
+        //     quantitySpan.textContent = currentQuantity + 1;
+        // }
+        
+        // function decreaseQuantity(btn) {
+        //     var quantitySpan = btn.parentNode.querySelector('.quantity');
+        //     var currentQuantity = parseInt(quantitySpan.textContent);
+        //     if (currentQuantity > 1) {
+        //     quantitySpan.textContent = currentQuantity - 1;
+        //     }
+        // }
+        function updateQuantity(element, change) {
+        // Find the parent cart-item
+        var cartItem = element.closest('.cart-item');
+
+        // Find the item price and quantity elements
+        var itemPriceElement = cartItem.querySelector('.item-price');
+        var quantityElement = cartItem.querySelector('.quantity');
+
+        // Get the current item price and quantity
+        var itemPrice = parseFloat(itemPriceElement.innerText.replace('$', ''));
+        var quantity = parseInt(quantityElement.innerText);
+
+        // Update the quantity
+        quantity += change;
+
+        // Ensure quantity is at least 1
+        quantity = Math.max(1, quantity);
+
+        // Update the quantity element
+        quantityElement.innerText = quantity;
+
+        // Calculate the new total price
+        var totalPrice = itemPrice * quantity;
+
+        // Update the total price in the cart-total element
+        updateCartTotal();
+    }
+
+    function updateCartTotal() {
+        // Find all cart-item elements
+        var cartItems = document.querySelectorAll('.cart-item');
+
+        // Initialize total price
+        var totalPrice = 0;
+
+        // Iterate over each cart item and sum their total prices
+        cartItems.forEach(function(cartItem) {
+            var itemPriceElement = cartItem.querySelector('.item-price');
+            var quantityElement = cartItem.querySelector('.quantity');
+
+            var itemPrice = parseFloat(itemPriceElement.innerText.replace('$', ''));
+            var quantity = parseInt(quantityElement.innerText);
+
+            totalPrice += itemPrice * quantity;
+        });
+
+        // Find the cart-total element
+        var cartTotalElement = document.querySelector('.cart-total .amount-details');
+
+        // Update the content of the cart-total element
+        cartTotalElement.innerText = '$' + totalPrice.toFixed(2);
+
+    }
     </script>
 </body>
 </html>
