@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const cors = require('cors')
 const morgan = require('morgan')
+const db = require('./db')
 
 // const bcrypt = require('bcrypt');
 
@@ -16,20 +17,7 @@ app.use(bodyParser.json());
 app.use(cors())
 app.use(morgan('dev'))
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'shoppinn',
-});
 
-db.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err);
-  } else {
-    console.log('Connected to MySQL database');
-  }
-});
 
 app.use(express.static('public'));
 app.use('/api', crudRoutes);
