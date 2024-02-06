@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <header >
+    <nav>
+        <div class="brand text-white">
+            <div class="brand-name">
+                <h4>Shoppin</h4>
+                <!-- <i cla></i> -->
+            </div>
+            <div class="toggle_btn">
 
-
+            </div>
+        </div>
+        
+        <div class="links text-white">
+            
+            <a href="/"><i class="bi bi-house-fill"></i> Home</a><br>
+        </div>
+    </nav>
+</header>
  
     <div class="main-checkout-container">
 
@@ -54,69 +70,65 @@
         <!-- Sub-Container 2 -->
         <div class="sub-container">
           <h2>Order Summary</h2>
-          <div class="long-box">
-            <div class="image-container">
-              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
+          <div class="checkout-info">
+            <div class="checkout-header">
+              <img src=<%=item.itemImage %> alt="">
             </div>
-          
-            <div class="line-vertical"></div>
-          
-            <div class="image-name-container">
-              <div class="image-name">Calvin Klein</div>
-            </div>
-          </div>
+            <div class="checkout-body">
+              <div class="amount-details subtotal">
+                <span class="label"><strong>Item:</strong></span>
+                <span class=""> <%=item.itemName %></span>
+              </div>
+              <div class="amount-details subtotal">
+                <span class="label"><strong>Type:</strong></span>
+                <span class=""> <%=item.itemType %></span>
+              </div>
+              <div class="amount-details subtotal">
+                <span class="label"><strong>Description:</strong></span>
+                <span class=""> <%=item.itemDescription %></span>
+              </div>
+              
+              <div class="amount-details subtotal">
+                <span class="label"><strong>Subtotal:</strong></span>
+                <span class="amount">$<span id="subtotalAmount"><%=item.itemPrice %></span> </span>
+              </div>
+              <div class="amount-details shipping">
+                <span class="label"><strong>Shipping:</strong></span>
+                <span class="amount">$5.00</span>
+              </div>
 
-          <div class="long-box">
-            <div class="image-container">
-              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
-            </div>
-          
-            <div class="line-vertical"></div>
-          
-            <div class="image-name-container">
-              <div class="image-name">Calvin Klein</div>
-            </div>
-          </div>
-
-          <div class="long-box">
-            <div class="image-container">
-              <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Image Description">
-            </div>
-          
-            <div class="line-vertical"></div>
-          
-            <div class="image-name-container">
-              <div class="image-name">Calvin Klein</div>
+              <div class="amount-details estimated-total">
+                <span class="label"><strong>Estimated Total:</strong></span>
+                <span class="amount">$<span id="estimatedTotalAmount"></span></span>
+              </div>
             </div>
           </div>
           
 
-         
-<div class="amount-details subtotal">
-  <span class="label">Subtotal:</span>
-  <span class="amount">$100.00</span>
-</div>
-
-<div class="amount-details tax">
-  <span class="label">Tax(Calculated in Checkout):</span>
-  <span class="amount">$10.00</span>
-</div>
-
-<div class="amount-details shipping">
-  <span class="label">Shipping(Free standard over $):</span>
-  <span class="amount">$5.00</span>
-</div>
-
-<div class="amount-details line"></div>
-
-<div class="amount-details estimated-total">
-  <span class="label">Estimated Total:</span>
-  <span class="amount">$115.00</span>
-</div>
+                      
+              
 
           
           </div>
       </div>
       <script src="/script.js"></script>
+      <script>
+           document.addEventListener("DOMContentLoaded", function() {
+        // Get the subtotal amount from the page
+        var subtotalAmount = parseFloat(document.querySelector('.subtotal .amount').innerText.replace('$', ''));
+
+        // Get the shipping amount from the page
+        var shippingAmount = parseFloat(document.querySelector('.shipping .amount').innerText.replace('$', ''));
+
+        // Calculate the estimated total
+        var estimatedTotal = subtotalAmount + shippingAmount;
+
+        // Update the subtotal amount on the page
+        document.getElementById('subtotalAmount').innerText = subtotalAmount.toFixed(2);
+
+        // Update the estimated total on the page
+        document.getElementById('estimatedTotalAmount').innerText = estimatedTotal.toFixed(2);
+    });
+      </script>
 </body>
 </html>

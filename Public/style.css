@@ -91,10 +91,12 @@ top: 0;
 
 }
 .search_bar input{
+  border: none !important;
   width: 80%;
   height: 100%;
   padding: 10px;
-
+  border-radius: 8px !important;
+  outline: none;
 }
 .search_bar .btn{
   width: 20%;
@@ -284,29 +286,32 @@ button:hover {
 
 /* Main Checkout Container */
 .main-checkout-container {
-  width: 100vw;
-  height:100vh;
-  margin: 0 auto;
+  width: 100%;
+  height:100%;
+  /* margin: 0 auto; */
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid #ffffff;
-  padding: 20px;
+  /* padding: 20px; */
   box-sizing: border-box;
-  overflow: auto;
+  /* overflow: auto; */
   color: #354e57;
 }
 
 
 /* Sub-Containers Inside Main Checkout */
 .sub-container {
-width: 48%; 
+width: 50%; 
 height: 100%;
-display: inline-block;
-box-sizing: border-box;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 margin-right: 0%;
 margin-top: 0%;
 vertical-align: top; 
+gap: 10px;
 }
 
 .sub-container:nth-child(1) {
@@ -322,7 +327,41 @@ background-color: #eef3f4;
 .sub-container:nth-child(2) {
   margin-right: 0;  
 }
+.checkout-info{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.checkout-header{
+  background-color: white;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 20px;
 
+}
+
+.checkout-header img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.checkout-body{
+  /* background-color: white; */
+  width: 100%;
+  /* height: 500px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding:10px 0;
+}
  
 .long-box {
   border: 1px solid #ddd;
@@ -333,7 +372,7 @@ background-color: #eef3f4;
 .sub-container {
   border: 1px solid #ffffff;
   padding: 10px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   
 }
 
@@ -377,16 +416,13 @@ background-color: #eef3f4;
 
 .subtotal, .tax, .shipping, .line, .estimated-total {
   width: 80%;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-weight: 600;
   font-size: 18px;
   
+  
 }
 
-.line {
-  border-top: 2px solid #ddd;
-  margin: 15px 0;
-}
 
 .estimated-total {
   font-weight: bold;
@@ -402,29 +438,14 @@ background-color: #eef3f4;
 
 .amount-details {
 color: #2b3242; 
-margin-bottom: 10px; 
 font-size: 16px;
 font-weight: 400;
+display: flex;
+width: 100%;
+
 }
 
 
-
-
-.subtotal {
-margin-right: 402px; 
-}
-
-.tax {
-margin-right: 30px;  
-}
-
-.shipping {
-margin-right: 40px; 
-}
-
-.estimated-total {
-margin-right: 50px;  
-}
 
 
  

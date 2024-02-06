@@ -15,7 +15,7 @@ a{
 
 }
 a:hover{
-  color: white;
+  color: initial;
 }
 input{
     border: none !important;
@@ -60,7 +60,7 @@ nav{
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 10px;
 }
 .fixed-header{

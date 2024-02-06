@@ -1,12 +1,14 @@
 const express = require('express');
 const crudRoutes = require('./Routes/CRUD');
 const bodyParser = require('body-parser');
-const mysql = require('mysql2');
 const cors = require('cors')
 const morgan = require('morgan')
-const db = require('./db')
-
+const db = require('./db');
+const axios = require('axios');
+const fs = require('fs').promises;
 // const bcrypt = require('bcrypt');
+const path = require('path');
+
 
 const app = express();
 const port = 3000;
@@ -16,8 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors())
 app.use(morgan('dev'))
-
-
 
 app.use(express.static('public'));
 app.use('/api', crudRoutes);
@@ -33,13 +33,43 @@ app.get('/index1', (req, res) => {
   const username = req.query.username;
   res.render('pages/index1', { pageTitle: 'index1', username: username });
 });
-
+app.get('/jsondata', async (req, res) => {
+    const dataUrl = 'http://localhost:3000/products.json'; 
+    try {
+      const response = await axios.get(dataUrl);
+      const jsonData = response.data;
+      const outputPath = path.join(__dirname, 'output.json');
+      await fs.writeFile(outputPath, JSON.stringify(jsonData, null, 2));   
+      res.send(jsonData);
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+    }
+  })
 app.get('/login', (req, res) => {
     res.render('pages/login', { pageTitle: 'sign in' });
   });
-  app.get('/checkout', (req, res) => {
-    res.render('pages/checkout', { pageTitle: 'checkout' });
-  });
+app.get('/checkout/:id', async (req, res) => {
+  const id =parseInt( req.params.id);
+  console.log(id);
+  try {
+    const response = await axios.get('http://127.0.0.1:3000/jsondata');
+    const records = response.data;
+
+    // Find the item with the matching itemId
+    const selectedItem = records.find(item => item.itemId === id);
+
+    if (selectedItem) {
+        // If the item is found, render the checkout page with the item details
+        res.render('pages/checkout', { pageTitle: 'Checkout', item: selectedItem });
+    } else {
+        // If no matching item is found, send a 404 response
+        res.status(404).send('Item not found');
+    }
+} catch (error) {
+    console.error('Error fetching data:', error.message);
+    res.status(500).send('Internal Server Error');
+}
+});
 
 
   app.post('/register', (req, res) => {

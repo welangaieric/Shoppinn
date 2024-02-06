@@ -1,5 +1,6 @@
 
   $(document).ready(function () {
+    const serverUrl = 'http://localhost:3000'
     if($('#fixed-header')){
       window.onscroll = function() {
         var header = document.getElementById("fixed-header");
@@ -23,7 +24,7 @@
 
         
         $.ajax({
-            url: 'http://localhost:3000/register',
+            url: `${serverUrl}/register`,
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ newUsername: newUsername, newEmail: newEmail, newPassword: newPassword }),
@@ -45,14 +46,14 @@
   
          
           $.ajax({
-              url: 'http://localhost:3000/signin',
+              url: `${serverUrl}/signin`,
               method: 'POST',
               contentType: 'application/json',
               data: JSON.stringify({ username: username, password: password }),
               success: function (response) {
                   if (response.success) {
                     
-                      window.location.href = 'http://localhost:3000/index1?username=' + response.username;
+                      window.location.href = '${serverUrl}/index1?username=' + response.username;
                   } else {
                      
                       console.log(response);
@@ -78,7 +79,7 @@
         $(this).hide();
     });
 
-
+   
 
   /*checkout editing script*/
   function editDetails(contentId1, contentId2) {
@@ -132,20 +133,24 @@
             // Process the fetched data
             $('.loading').fadeOut()
             $('.products').html('')
-            displayCartItems(data);
+            displayProducts(data);
         },
         error: function(error) {
             console.error('Error fetching data:', error);
         }
     });
+   
 });
 
-function displayCartItems(cartItems) {
-    var cartItemsContainer = $('.products');
+function displayProducts(cartItems) {
+    var productsContainer = $('.products');
 
     // Iterate through the cart items and display them
     $.each(cartItems, function(index, item) {
-      let temp = `<div class="product-card" data.id=${item.itemId}>
+
+      let temp = `
+      <a href=${serverUrl}/checkout/${item.itemId}>
+                <div class="product-card" data-id=${item.itemId}>
                     <div class="product-card-header">
                       <img src="${item.itemImage}" alt="${item.itemName}">
                     </div>
@@ -160,24 +165,48 @@ function displayCartItems(cartItems) {
                         <span class="star">&#9734;</span>
                     </div>
                     </div>
-                </div>`
-        var itemHtml = `
-            <div class="cart-item">
-                <div class="cart-item-header">
-                    <img src="${item.itemImage}" alt="${item.itemName}">
                 </div>
-                <div class="cart-item-body">
-                    <h6 class="item-name">${item.itemName}</h6>
-                    <p class="item-price">$${item.itemPrice.toFixed(2)}</p>
-                    <p class="item-description">${item.itemDescription}</p>
-                </div>
-            </div>
-        `;
+                </a>`
+    
 
-        cartItemsContainer.append(temp);
+        productsContainer.append(temp);
+    });
+    const prod = $('.product-card');
+
+    prod.each(function(index, element) {
+        $(element).on('click', () => {
+            const id = $(element).data('id');
+            $.ajax({
+              type:'get',
+              url:`${serverUrl}/checkout/${id}`,
+              success:function(response){
+                console.log(response)
+              }
+            })
+        });
     });
 }
+function displayCartItems(item){
+  var cartItemsContainer = $('.cart-body');
+  var itemHtml = `
+            <div class="cart-item">
+                    <div class="cart-item-header">
+                    <img src="${item.itemImage}" alt="${item.itemName}">
+                    </div>
+                    <div class="cart-item-body">
+                      <h6 class="item-name">${item.itemName}</h6>
+                      <p class="item-price">$${item.itemPrice.toFixed(2)}</p>
+                        <div class="item-quantity">
+                            <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
+                            <span class="quantity">1</span>
+                            <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+        `;
 
+        cartItemsContainer.append(itemHtml);
+}
   /*product page*/
 
     $('.owl-carousel').owlCarousel({
