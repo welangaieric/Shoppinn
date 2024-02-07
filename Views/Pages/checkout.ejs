@@ -39,8 +39,8 @@
           
           <div class="shipping-details">
             <h3>Shipping Details</h3>
-            <p id="shippingAddress">Shipping Address: <span contenteditable="true">123 Main St</span></p>
-            <p id="shippingMethod">Shipping Method: <span contenteditable="true">Standard Shipping</span></p>
+            <p id="shippingAddress">Shipping Address: <span>123 Main St</span></p>
+            <p id="shippingMethod">Shipping Method: <span>Standard Shipping</span></p>
             <a href="#" class="edit-link" onclick="editDetails('shippingAddress', 'shippingMethod')">Edit</a>
           </div>
         
@@ -48,18 +48,18 @@
         
           <div class="delivery-details">
             <h3>Delivery Details</h3>
-            <p id="deliveryDate">Estimated Delivery Date: <span contenteditable="true">January 30, 2024</span></p>
-            <p id="deliveryStatus">Delivery Status: <span contenteditable="true">In Transit</span></p>
-            <a href="#" class="edit-link" onclick="editDetails('deliveryDate', 'deliveryStatus')">Edit</a>
+            <p id="deliveryDate">Estimated Delivery Date: <span >January 30, 2024</span></p>
+            <p id="deliveryStatus">Delivery Status: <span>In Transit</span></p>
+            <a href="#" class="edit-link" onclick="editDetails('deliveryDate', 'deliveryStatus')">__</a>
           </div>
         
           <div class="line"></div>
         
           <div class="payment-details">
             <h3>Payment Details</h3>
-            <p id="paymentMethod">Payment Method: <span contenteditable="true">Credit Card</span></p>
-            <p id="totalAmount">Total Amount: <span contenteditable="true">$100.00</span></p>
-            <a href="#" class="edit-link" onclick="editDetails('paymentMethod', 'totalAmount')">Edit</a>
+            <p id="paymentMethod">Payment Method: <span>Credit Card</span></p>
+            <p id="totalAmount">Total Amount: <span>$100.00</span></p>
+            <a href="#" class="edit-link" onclick="editDetails('paymentMethod', 'totalAmount')">__</a>
           </div>
   <div class="line"></div>
 
@@ -105,7 +105,25 @@
           </div>
           
 
-                      
+          <div id="editDetailsModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Edit Details</h2>
+              <form id="editDetailsForm">
+                <!-- Add form fields for editing details -->
+                <label for="newShippingAddress">Shipping Address:</label>
+                <input type="text" id="newShippingAddress" name="newShippingAddress" required>
+          <br>
+          <br>
+                <label for="newPaymentMethod">payment Method:</label>
+                <input type="text" id="newPaymentMethod" name="newPaymentMethod" required>
+          <br>
+          <button type="submit" id="saveChangesBtn" class="button">Save Changes</button>
+
+              </form>
+            </div>
+          </div>
+              
               
 
           
@@ -113,6 +131,41 @@
       </div>
       <script src="/script.js"></script>
       <script>
+/*pop up*/
+var modal = document.getElementById("editDetailsModal");
+
+var editLink = document.getElementsByClassName("edit-link")[0];
+
+var span = document.getElementsByClassName("close")[0];
+
+editLink.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById("editDetailsForm").addEventListener("submit", function(event) {
+  event.preventDefault(); 
+
+  var newShippingAddress = document.getElementById("newShippingAddress").value;
+   var newPaymentMethod = document.getElementById("newPaymentMethod").value;
+ 
+  document.getElementById("shippingAddress").querySelector('span').textContent = newShippingAddress;
+  document.getElementById("paymentMethod").querySelector('span').textContent = newPaymentMethod;
+
+  modal.style.display = "none";
+});
+
+
+
            document.addEventListener("DOMContentLoaded", function() {
         // Get the subtotal amount from the page
         var subtotalAmount = parseFloat(document.querySelector('.subtotal .amount').innerText.replace('$', ''));
@@ -129,6 +182,7 @@
         // Update the estimated total on the page
         document.getElementById('estimatedTotalAmount').innerText = estimatedTotal.toFixed(2);
     });
+
       </script>
 </body>
 </html>

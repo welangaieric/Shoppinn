@@ -82,30 +82,9 @@
    
 
   /*checkout editing script*/
-  function editDetails(contentId1, contentId2) {
-    
-    document.querySelector(`[onclick="editDetails('${contentId1}', '${contentId2}')"]`).innerHTML = 'Update';
-    document.querySelector(`[onclick="editDetails('${contentId1}', '${contentId2}')"]`).setAttribute('onclick', `updateDetails('${contentId1}', '${contentId2}')`);
   
-    
-    document.getElementById(contentId1).querySelector('span').setAttribute('contenteditable', 'true');
-    document.getElementById(contentId2).querySelector('span').setAttribute('contenteditable', 'true');
-  }
-  
-  function updateDetails(contentId1, contentId2) {
-    
-    document.querySelector(`[onclick="updateDetails('${contentId1}', '${contentId2}')"]`).innerHTML = 'Edit';
-    document.querySelector(`[onclick="updateDetails('${contentId1}', '${contentId2}')"]`).setAttribute('onclick', `editDetails('${contentId1}', '${contentId2}')`);
-  
-    
-    document.getElementById(contentId1).querySelector('span').setAttribute('contenteditable', 'false');
-    document.getElementById(contentId2).querySelector('span').setAttribute('contenteditable', 'false');
-  }
-  
-  function placeOrder() {
-    
-    alert('Order placed successfully!');
-  }
+
+ 
   /*cart*/
   //==open and close cart==//
   var cart = $('#floatingCart');
@@ -141,36 +120,35 @@
     });
    
 });
-
 function displayProducts(cartItems) {
-    var productsContainer = $('.products');
+  var productsContainer = $('.products');
 
-    // Iterate through the cart items and display them
-    $.each(cartItems, function(index, item) {
+  // Iterate through the cart items and display them
+  $.each(cartItems, function(index, item) {
 
-      let temp = `
-      <a href=${serverUrl}/checkout/${item.itemId}>
-                <div class="product-card" data-id=${item.itemId}>
-                    <div class="product-card-header">
-                      <img src="${item.itemImage}" alt="${item.itemName}">
-                    </div>
-                    <div class="product-details">
-                    <div class="product-title">${item.itemName}</div>
-                    <div class="product-price">$${item.itemPrice.toFixed(2)}</div>
-                    <div class="product-ratings">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9734;</span>
-                    </div>
-                    </div>
-                </div>
-                </a>`
-    
+    let temp = `
+    <a href=${serverUrl}/checkout/${item.itemId}>
+              <div class="product-card" data-id=${item.itemId}>
+                  <div class="product-card-header">
+                    <img src="${item.itemImage}" alt="${item.itemName}">
+                  </div>
+                  <div class="product-details">
+                  <div class="product-title">${item.itemName}</div>
+                  <div class="product-price">$${item.itemPrice.toFixed(2)}</div>
+                  <div class="product-ratings">
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9734;</span>
+                  </div>
+                  </div>
+              </div>
+              </a>`
+  
 
-        productsContainer.append(temp);
-    });
+      productsContainer.append(temp);
+  });
     const prod = $('.product-card');
 
     prod.each(function(index, element) {
@@ -206,7 +184,14 @@ function displayCartItems(item){
         `;
 
         cartItemsContainer.append(itemHtml);
+
 }
+
+
+
+
+
+
   /*product page*/
 
     $('.owl-carousel').owlCarousel({
