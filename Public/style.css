@@ -512,6 +512,10 @@ margin-right: 0;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
+.Description{
+  display: flex;
+  flex-direction: column;
+}
 .button-33:hover{
   background-color: transparent !important;
   border: .8px solid #354e57 !important;
