@@ -41,24 +41,23 @@
   });
 
   // Sign-in button click event handler
-  $("#sign-in-form").on("submit", function () {
-      var username = $("#username").val();
-      var password = $("#password").val();
+  // $(".sign-in-form").on("submit", function () {
+  //     var username = $("#username").val();
+  //     var password = $("#password").val();
 
-      $.ajax({
-          url: `${serverUrl}/signin`,
-          method: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({ username: username, password: password }),
-          success: function (response) {
-            console.log(response); 
-        },
-          error: function (error) {
-              console.error(error);
-              alert('Error during sign-in');
-          }
-      });
-  });
+  //     $.ajax({
+  //         url: `${serverUrl}/signin`,
+  //         method: 'POST',
+  //         data:$(".sign-in-form").serialize(),
+  //         success: function (response) {
+  //           console.log(response); 
+  //       },
+  //         error: function (error) {
+  //             console.error(error);
+  //             alert('Error during sign-in');
+  //         }
+  //     });
+  // });
 
   // Show sign-in form button click event handler
   $("#showSignInBtn").on("click", function () {
@@ -195,22 +194,7 @@ function addToCart(id,user){
 
   /*product page*/
 
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:10,
-        nav:false,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:5
-            }
-        }
-    })
+  
     //============count down =========================///
     function startCountdown(durationInSeconds) {
         let timerElement = document.getElementById('timer');

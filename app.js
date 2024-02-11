@@ -170,12 +170,18 @@ app.get('/cartitem/:id', async (req, res) => {
                 const user = signInResults[0];
                 console.log(user)
                 if (user.userType === 'admin') {
+                   console.log('admin')
+
                   res.render('pages/dashboard', { pageTitle: 'Dashboard',data:user });
-                } else {
+                } if(user.userType === 'user') {
+                console.log('user')
+
                   res.render('pages/index1', { pageTitle: 'Index 1', data:user });
                 }
-            } else {
-              res.render('pages/login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
+                else {
+                  console.log('fail')
+                  res.render('pages/login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
+                }
             }
         });
       
