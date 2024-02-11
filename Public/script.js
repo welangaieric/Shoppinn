@@ -41,12 +41,12 @@
   });
 
   // Sign-in button click event handler
-  $("#signInBtn").on("click", function () {
+  $("#sign-in-form").on("submit", function () {
       var username = $("#username").val();
       var password = $("#password").val();
 
       $.ajax({
-          url: '/signin',
+          url: `${serverUrl}/signin`,
           method: 'POST',
           contentType: 'application/json',
           data: JSON.stringify({ username: username, password: password }),

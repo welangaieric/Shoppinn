@@ -157,26 +157,27 @@ app.get('/cartitem/:id', async (req, res) => {
     try {
 
       const { username, password } = req.body;
-    if (!username || !password) {
-      return res.status(400).json({ success: false, message: 'All fields are required.' });
-  }
+          if (!username || !password) {
+            return res.status(400).json({ success: false, message: 'All fields are required.' });
+        }
 
-  const signInQuery = 'SELECT * FROM users WHERE username = ? AND password = ?';
-  db.query(signInQuery, [username, password], (signInErr, signInResults) => {
-      if (signInErr) {
-          console.error('Error during sign-in:', signInErr);
-          res.status(500).json({ success: false, message: 'Internal Server Error' });
-      } else if (signInResults.length > 0) {
-          const user = signInResults[0];
-          if (user.userType === 'admin') {
-            res.render('pages/dashboard', { pageTitle: 'Dashboard',data:user });
-          } else {
-            res.render('pages/index1', { pageTitle: 'Index 1', data:user });
-          }
-      } else {
-        res.render('pages/login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
-      }
-  });
+        const signInQuery = 'SELECT * FROM users WHERE username = ? AND password = ?';
+        db.query(signInQuery, [username, password], (signInErr, signInResults) => {
+            if (signInErr) {
+                console.error('Error during sign-in:', signInErr);
+                res.status(500).json({ success: false, message: 'Internal Server Error' });
+            } else if (signInResults.length > 0) {
+                const user = signInResults[0];
+                console.log(user)
+                if (user.userType === 'admin') {
+                  res.render('pages/dashboard', { pageTitle: 'Dashboard',data:user });
+                } else {
+                  res.render('pages/index1', { pageTitle: 'Index 1', data:user });
+                }
+            } else {
+              res.render('pages/login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
+            }
+        });
       
     } catch (error) {
       console.log(error)
