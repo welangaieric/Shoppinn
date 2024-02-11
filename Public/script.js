@@ -18,70 +18,53 @@
     }
     $('')
    
-    $("#registerBtn").on("click", function () {
-       
-        var newUsername = $("#newUsername").val();
-        var newEmail = $("#newEmail").val();
-        var newPassword = $("#newPassword").val();
+     // Register button click event handler
+     $("#registerBtn").on("click", function () {
+      var newUsername = $("#newUsername").val();
+      var newEmail = $("#newEmail").val();
+      var newPassword = $("#newPassword").val();
 
-        
-        $.ajax({
-            url: `${serverUrl}/register`,
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ newUsername: newUsername, newEmail: newEmail, newPassword: newPassword }),
-            success: function (response) {
-                console.log(response);
-                alert(response.message);
-            },
-            error: function (error) {
-                console.error(error);
-                alert('Error during registration');
-            }
-        });
-
-      
-      $("#signInBtn").on("click", function () {
-          
-          var username = $("#username").val();
-          var password = $("#password").val();
-  
-         
-          $.ajax({
-              url: `${serverUrl}/signin`,
-              method: 'POST',
-              contentType: 'application/json',
-              data: JSON.stringify({ username: username, password: password }),
-              success: function (response) {
-                  if (response.success) {
-                    
-                      window.location.href = '${serverUrl}/index1?username=' + response.username;
-                  } else {
-                     
-                      console.log(response);
-  
-                      
-                      var errorMessage = response.message || 'Sign-in failed. Please try again.';
-                      alert(errorMessage);
-                  }
-              },
-              error: function (error) {
-                  console.error(error);
-                  alert('Error during sign-in');
-              }
-          });
+      $.ajax({
+          url: `${serverUrl}/register`,
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ newUsername: newUsername, newEmail: newEmail, newPassword: newPassword }),
+          success: function (response) {
+              console.log(response);
+              alert(response.message);
+          },
+          error: function (error) {
+              console.error(error);
+              alert('Error during registration');
+          }
       });
   });
-  
 
-    
-    
-    $("#showSignInBtn").on("click", function () {
-        $(".sign-in-form").toggle();
-        $(this).hide();
-    });
+  // Sign-in button click event handler
+  $("#signInBtn").on("click", function () {
+      var username = $("#username").val();
+      var password = $("#password").val();
 
-   
+      $.ajax({
+          url: '/signin',
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ username: username, password: password }),
+          success: function (response) {
+            console.log(response); 
+        },
+          error: function (error) {
+              console.error(error);
+              alert('Error during sign-in');
+          }
+      });
+  });
+
+  // Show sign-in form button click event handler
+  $("#showSignInBtn").on("click", function () {
+      $(".sign-in-form").toggle();
+      $(this).hide();
+  });
 
   /*checkout editing script*/
   
