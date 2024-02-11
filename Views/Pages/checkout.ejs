@@ -120,9 +120,7 @@
                 <input type="text" id="newShippingAddress" name="newShippingAddress" required>
           <br>
           <br>
-                <label for="newPaymentMethod">payment Method:</label>
-                <input type="text" id="newPaymentMethod" name="newPaymentMethod" required>
-          <br>
+          
           <button type="submit" id="saveChangesBtn" class="button">Save Changes</button>
 
               </form>
@@ -161,11 +159,9 @@ document.getElementById("editDetailsForm").addEventListener("submit", function(e
   event.preventDefault(); 
 
   var newShippingAddress = document.getElementById("newShippingAddress").value;
-   var newPaymentMethod = document.getElementById("newPaymentMethod").value;
- 
-  document.getElementById("shippingAddress").querySelector('span').textContent = newShippingAddress;
-  document.getElementById("paymentMethod").querySelector('span').textContent = newPaymentMethod;
 
+  document.getElementById("shippingAddress").querySelector('span').textContent = newShippingAddress;
+ 
   modal.style.display = "none";
 });
 
