@@ -21,12 +21,57 @@
         </div>
         
         <div class="links text-white">
-            
-            <a href="/"><i class="bi bi-house-fill"></i> Home</a><br>
-        </div>
+                
+          <a href="#" class="show-cart-btn" data-id="3"><i class="bi bi-cart4"></i> Cart</a>
+      </div>
     </nav>
 </header>
- 
+<section>
+    
+  <div class="floating-cart" id="floatingCart">
+      <div class="cart-header">
+          <h2>Cart</h2>
+          <i class="bi bi-x close-cart-btn"></i>
+      </div>
+    
+      <div class="cart-body">
+          <div class="cart-item">
+              <div class="cart-item-header">
+                  <img src="images/watches/Calvin Klein Men's Minimal Quartz.jpg" alt="Product 1">
+              </div>
+              <div class="cart-item-body">
+                  <h6 class="item-name">Calvin Klein</h6>
+                  <p class="item-price">$20.00</p>
+                  <div class="item-quantity">
+                      <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
+                      <span class="quantity">1</span>
+                      <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="cart-item">
+              <div class="cart-item-header">
+                  <img src="images/assets/ring1.png" alt="Product 1">
+              </div>
+              <div class="cart-item-body">
+                  <h6 class="item-name">Diamond Ring</h6>
+                  <p class="item-price">$15.00</p>
+                  <div class="item-quantity">
+                      <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
+                      <span class="quantity">1</span>
+                      <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
+                  </div>
+              </div>
+          </div>
+          <div class="cart-footer">
+              <div class="cart-total">Cart Total: <span class="amount-details">$35.00</span></div>
+              <a href="#" class="checkout-btn">Checkout</a>
+          </div>
+      
+      </div>
+  </div>
+</section>
     <div class="main-checkout-container">
 
      
@@ -66,7 +111,7 @@
   <h3>Everything look good?</h3>
   <div class="button-section">
     <div class="control-btns">
-      <button class="add-to-cart"><i class="bi bi-cart-plus-fill"></i> Cart</button>
+      <button class="add-to-cart" data-user="2" data-productId=<%=item.itemId %>  ><i class="bi bi-cart-plus-fill"></i> Cart</button>
       <button type="button" class="button-33" onclick="placeOrder()" role="button">Place Order</button>
     </div>
   </div>

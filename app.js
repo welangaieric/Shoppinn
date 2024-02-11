@@ -70,7 +70,55 @@ app.get('/checkout/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
 }
 });
+app.get('/cartitem/:id/:user', async (req, res) => {
+  const id =parseInt( req.params.id);
+  const user= parseInt(req.params.user)
+  console.log(id);
+  try {
+    const response = await axios.get('http://127.0.0.1:3000/jsondata');
+    const records = response.data;
 
+    // Find the item with the matching itemId
+    const selectedItem = records.find(item => item.itemId === id);
+
+    if (selectedItem) {
+        // If the item is found, render the checkout page with the item details
+        // add to cart
+        const cartQuery = 'Insert into cart set ?'
+        const data = {
+          user_id:user,
+          product_id:selectedItem.itemId,
+          product_name:selectedItem.itemName,
+          image:selectedItem.itemImage,
+          price:selectedItem.itemPrice
+        }
+       db.query(cartQuery,[data])
+        res.status(200).json(selectedItem)
+    } else {
+        // If no matching item is found, send a 404 response
+        res.status(404).send('Item not found');
+    }
+} catch (error) {
+    console.error('Error fetching data:', error.message);
+    res.status(500).send('Internal Server Error');
+}
+});
+app.get('/cartitem/:id', async (req, res) => {
+  const getQuery = "SELECT * FROM cart WHERE user_id = 1";
+  const record = db.query(getQuery,[null]);
+  console.log(record)
+  res.send(record)
+  // res.status(200).json(record);
+  // try {
+  //   const getQuery = "SELECT * FROM cart WHERE user_id = ?";
+  //   const record = db.query(getQuery,req.params.id);
+  //   console.log(record);
+  //   res.status(200).json(record);
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).json({ error: 'Internal server error' });
+  // }
+});
 
   app.post('/register', (req, res) => {
     const { newUsername, newEmail, newPassword } = req.body;
