@@ -1,4 +1,6 @@
 
+
+
   $(document).ready(function () {
     const serverUrl = 'http://localhost:3000'
     const cartItem=[]
@@ -41,9 +43,10 @@
   });
 
   // Sign-in button click event handler
-  // $(".sign-in-form").on("submit", function () {
+  // $(".sign-in-form").on("submit", function (e) {
   //     var username = $("#username").val();
   //     var password = $("#password").val();
+  //     e.preventDefault()
 
   //     $.ajax({
   //         url: `${serverUrl}/signin`,
@@ -72,20 +75,28 @@
   /*cart*/
   //==open and close cart==//
   var cart = $('#floatingCart');
-  $('.show-cart-btn').on('click',()=>{
+  $('.show-cart-btn').on('click',function(){
     cart.fadeIn()
+    const id =$(this).data('id')
+    $('.cart-body').html('')
+    getCart(id)
     $('#cartBackdrop').fadeIn()
+
   })
   $('.close-cart-btn').on('click',()=>{
     $('#cartBackdrop').fadeOut()
     cart.fadeOut()
   })
 
-  $('.add-to-cart').on('click',()=>{
-    let id =$(this).data('productId')
-    let user =$(this).data('user')
-    addToCart(id,user)
-  })
+  $('.add-to-cart').on('click', async function(e) {
+    e.preventDefault();
+    let id = $(this).data('productid');
+    let user = $(this).data('user');
+    $('.cart-body').html('');
+  
+   addToCart(id, user);
+   getCart(user);
+  });
   //===////
 
   
@@ -102,10 +113,11 @@
             // Process the fetched data
             $('.loading').fadeOut()
             $('.products').html('')
-            displayProducts(data);
+            displayProducts(data)
+            
         },
         error: function(error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data:');
         }
     });
    
@@ -159,21 +171,44 @@ function displayCartItems(item){
   var itemHtml = `
             <div class="cart-item">
                     <div class="cart-item-header">
-                    <img src="${item.itemImage}" alt="${item.itemName}">
+                    <img src="${item.image}" alt="${item.product_name}">
                     </div>
                     <div class="cart-item-body">
-                      <h6 class="item-name">${item.itemName}</h6>
-                      <p class="item-price">$${item.itemPrice.toFixed(2)}</p>
+                      <h6 class="item-name">${item.product_name}</h6>
+                      <p class="item-price">$${item.price}</p>
                         <div class="item-quantity">
                             <div class="quantity-btn add-quantity" onclick="updateQuantity(this, -1)">-</div>
                             <span class="quantity">1</span>
                             <div class="quantity-btn decrease-quantity" onclick="updateQuantity(this, 1)">+</div>
                         </div>
                     </div>
+                    <div class="cart-item-action deleteItem"  data-id=${item.id} data-user=${item.user_id}>
+                        <i class="bi bi-trash"></i>
+                    </div>
                 </div>
         `;
 
         cartItemsContainer.append(itemHtml);
+        $('.cart-body').on('click', '.deleteItem', function () {
+          const id = $(this).data('id');
+          const user = $(this).data('user');
+          console.log("result");
+        
+          $.ajax({
+            type: 'DELETE',
+            url: `${serverUrl}/api/cart/${id}`,
+            success: function (result) {
+              // console.log(result);
+              showSnackbar('Item removed successfully');
+              $('.cart-body').html('');
+              getCart(user);
+            },
+            error: function (err) {
+              console.log(err);
+              showSnackbar('Item removed successfully');
+            }
+          });
+        });
 
 }
 
@@ -182,15 +217,63 @@ function addToCart(id,user){
     type:'get',
     url:`${serverUrl}/cartitem/${id}/${user}`,
     success:function(response){
-      $('.cart-body').html('')
-      displayCartItems(response)
+      // $('.cart-body').html('')
+      // displayCartItems(response)
+      showSnackbar('Added To Your Cart')
     }
   })
   
 }
+function getCart(id) {
+  try {
+    $.ajax({
+      type: 'GET',
+      url: `${serverUrl}/cart/${id}`,
+      success: function (result) {
+        console.log(result);
+        result.forEach(async function(data){
+          // console.log(data);
+          await displayCartItems(data);
+        });
+        
+        // Calculate total price and append it to .cart-total
+        const totalPrice = getTotalPrice();
+        console.log('Total Price:', totalPrice);
+        $('#total_Amount').html(`$${totalPrice}`);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error occurred while fetching cart:", error);
+        // Handle the error, such as displaying a message to the user
+      }
+    });
+  } catch (error) {
+    console.error("An unexpected error occurred:", error);
+    // Handle unexpected errors
+  }
+}
+function getTotalPrice() {
+  let totalPrice = 0;
+  const itemPrices = document.querySelectorAll('.item-price');
+  
+  itemPrices.forEach(item => {
+    totalPrice += parseFloat(item.innerHTML.replace('$', '')); // Remove '$' before parsing
+  });
+  
+  return totalPrice.toFixed(2); // Return formatted as 2 decimal places
+}
 
+function showSnackbar(message = '', buttonText = '', event) {
 
+  const snackbar = document.querySelector('.mdc-snackbar');
+  document.querySelector('.mdc-snackbar__label')
+      .innerHTML = `${message}`;
 
+  snackbar.classList.add('show');
+  setTimeout(function () {
+      snackbar.classList.remove("show");
+  }, 6200);
+
+}
 
   /*product page*/
 
@@ -237,15 +320,6 @@ function addToCart(id,user){
             header.classList.remove("fixed-header");
         }
     };
-    // const similarElements = document.querySelectorAll('.product');
-
-    // // Calculate the width based on the number of similar elements
-    // const containerWidth = document.querySelector('.products').offsetWidth;
-    // const calculatedWidth = containerWidth / similarElements.length;
-  
-    // // Set the width for each similar element
-    // similarElements.forEach(element => {
-    //   element.style.width = `${calculatedWidth}px`;
-    // });
+ 
 })
 

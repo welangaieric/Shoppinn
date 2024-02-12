@@ -108,22 +108,22 @@ app.get('/cartitem/:id/:user', async (req, res) => {
     res.status(500).send('Internal Server Error');
 }
 });
-app.get('/cartitem/:id', async (req, res) => {
-  const getQuery = "SELECT * FROM cart WHERE user_id = 1";
-  const record = db.query(getQuery,[null]);
-  console.log(record)
-  res.send(record)
-  // res.status(200).json(record);
-  // try {
-  //   const getQuery = "SELECT * FROM cart WHERE user_id = ?";
-  //   const record = db.query(getQuery,req.params.id);
-  //   console.log(record);
-  //   res.status(200).json(record);
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(500).json({ error: 'Internal server error' });
-  // }
+app.get('/cart/:id', (req, res) => {
+  const userId = req.params.id;
+  const query = `SELECT * FROM cart WHERE user_id = ?`;
+
+  db.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query: ' + error.stack);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+
+    // If records are found, send them as JSON response
+    res.status(200).json(results);
+  });
 });
+
 
   app.post('/register', (req, res) => {
     const { newUsername, newEmail, newPassword } = req.body;

@@ -180,19 +180,20 @@ router.post('/cart', (req, res) => {
 });
 
 // Read all cart items for a user (GET)
-router.get('/cart/:user_id', (req, res) => {
-  const userId = parseInt(req.params.user_id);
-  const sql = 'SELECT * FROM cart WHERE user_id = ?';
+// router.get('/cart/:user_id', (req, res) => {
+//   const userId = parseInt(req.params.user_id);
+//   const sql = 'SELECT * FROM cart WHERE user_id = ?';
 
-  db.query(sql, userId, (err, results) => {
-    if (err) {
-      console.error('Error retrieving cart items:', err);
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(results);
-    }
-  });
-});
+//   db.query(sql, userId, (err, results) => {
+//     if (err) {
+//       console.error('Error retrieving cart items:', err);
+//       res.status(500).json({ error: err.message });
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
+
 
 // Update cart item (PUT)
 router.put('/cart/:user_id', (req, res) => {
@@ -213,7 +214,7 @@ router.put('/cart/:user_id', (req, res) => {
 // Delete cart item (DELETE)
 router.delete('/cart/:user_id', (req, res) => {
   const userId = parseInt(req.params.user_id);
-  const sql = 'DELETE FROM cart WHERE user_id = ?';
+  const sql = 'DELETE FROM cart WHERE id = ?';
 
   db.query(sql, userId, (err, result) => {
     if (err) {

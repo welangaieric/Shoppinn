@@ -443,7 +443,7 @@ nav{
       border-radius: 8px;
     }
     .cart-item-header{
-      width: 30%;
+      width: 20%;
       height: 100%;
       display: flex;
       justify-content: center;
@@ -456,13 +456,20 @@ nav{
       object-position:center !important ;
     }
     .cart-item-body{
-      width: 70%;
+      width: 60%;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: left;
+    }
+    .cart-item-action{
+      width: 20%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .item-price{
       width: 100%;
