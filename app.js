@@ -23,14 +23,14 @@ app.use(express.static('public'));
 app.use('/api', crudRoutes);
 
 app.set('view engine', 'ejs');
-app.set('views', '/var/www/Shoppinn/views');
+// app.set('views', '/var/www/Shoppinn/views');
 app.get('/', (req, res) => {
   const username = req.query.username;
-  res.render('pages/index', { pageTitle: 'Home', username: username });
+  res.render('index', { pageTitle: 'Home', username: username });
 });
 
 app.get('/index1', (req, res) => {
-  res.render('pages/index1', { pageTitle: 'Index 1' });
+  res.render('index1', { pageTitle: 'Index 1' });
 });
 
 app.get('/jsondata', async (req, res) => {
@@ -46,11 +46,11 @@ app.get('/jsondata', async (req, res) => {
     }
   })
 app.get('/login', (req, res) => {
-    res.render('pages/login', { pageTitle: 'sign in' });
+    res.render('login', { pageTitle: 'sign in' });
   });
 
   app.get('/dashboard', (req, res) => {
-    res.render('pages/dashboard', { pageTitle: 'Dashboard' });
+    res.render('dashboard', { pageTitle: 'Dashboard' });
 });
 
 app.get('/checkout/:id', async (req, res) => {
@@ -65,7 +65,7 @@ app.get('/checkout/:id', async (req, res) => {
 
     if (selectedItem) {
         // If the item is found, render the checkout page with the item details
-        res.render('pages/checkout', { pageTitle: 'Checkout', item: selectedItem });
+        res.render('checkout', { pageTitle: 'Checkout', item: selectedItem });
     } else {
         // If no matching item is found, send a 404 response
         res.status(404).send('Item not found');
@@ -172,15 +172,15 @@ app.get('/cart/:id', (req, res) => {
                 if (user.userType === 'admin') {
                    console.log('admin')
 
-                  res.render('pages/dashboard', { pageTitle: 'Dashboard',data:user });
+                  res.render('dashboard', { pageTitle: 'Dashboard',data:user });
                 } if(user.userType === 'user') {
                 console.log('user')
 
-                  res.render('pages/index1', { pageTitle: 'Index 1', data:user });
+                  res.render('index1', { pageTitle: 'Index 1', data:user });
                 }
                 else {
                   console.log('fail')
-                  res.render('pages/login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
+                  res.render('login', { pageTitle: 'sign in',  message: 'Invalid credentials'});
                 }
             }
         });
