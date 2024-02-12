@@ -35,7 +35,7 @@
             </div>
         </nav>
     </header>
-    
+    <%- include('../snackbar.ejs')%>
     <section>
     
         <div class="floating-cart" id="floatingCart">
@@ -78,7 +78,7 @@
             
             </div>
             <div class="cart-footer">
-                <div class="cart-total">Cart Total: <span class="amount-details">$0.00</span></div>
+                <div class="cart-total">Cart Total: <span class="amount-details" id="total_Amount">$0.00</span></div>
                 <a href="#" class="checkout-btn">Checkout</a>
             </div>
         </div>

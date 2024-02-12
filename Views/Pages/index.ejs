@@ -135,8 +135,11 @@
         behavior: 'smooth'
     });
 }
-$('.product-card').on('click',()=>{
-    window.location.href = "/login";
+$('.product-card').on('click',function(){
+    $(this).on('click',()=>{
+        window.location.href = "/login";
+    })
+   
 })
     </script>
 </body>

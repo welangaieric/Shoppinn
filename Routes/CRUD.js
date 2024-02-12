@@ -17,6 +17,7 @@ router.post('/users', (req, res) => {
   });
 });
 
+
 // Read all users (GET)
 router.get('/users', (req, res) => {
   const sql = 'SELECT * FROM users';
