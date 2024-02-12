@@ -29,6 +29,9 @@ app.get('/', (req, res) => {
   res.render('index', { pageTitle: 'Home', username: username });
 });
 
+
+
+
 app.get('/index1', (req, res) => {
   res.render('index1', { pageTitle: 'Index 1' });
 });
