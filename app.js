@@ -34,7 +34,7 @@ app.get('/index1', (req, res) => {
 });
 
 app.get('/jsondata', async (req, res) => {
-    const dataUrl = 'http://localhost:3000/products.json'; 
+    const dataUrl = 'https://159.100.9.179:4000/products.json'; 
     try {
       const response = await axios.get(dataUrl);
       const jsonData = response.data;
@@ -57,7 +57,7 @@ app.get('/checkout/:id', async (req, res) => {
   const id =parseInt( req.params.id);
   console.log(id);
   try {
-    const response = await axios.get('http://127.0.0.1:3000/jsondata');
+    const response = await axios.get('https://159.100.9.179:4000/jsondata');
     const records = response.data;
 
     // Find the item with the matching itemId
@@ -80,7 +80,7 @@ app.get('/cartitem/:id/:user', async (req, res) => {
   const user= parseInt(req.params.user)
   console.log(id);
   try {
-    const response = await axios.get('http://127.0.0.1:3000/jsondata');
+    const response = await axios.get('https://159.100.9.179:4000/jsondata');
     const records = response.data;
 
     // Find the item with the matching itemId
