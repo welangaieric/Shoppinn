@@ -23,7 +23,7 @@ app.use(express.static('public'));
 app.use('/api', crudRoutes);
 
 app.set('view engine', 'ejs');
-
+app.set('views', '/var/www/Shoppinn/views');
 app.get('/', (req, res) => {
   const username = req.query.username;
   res.render('pages/index', { pageTitle: 'Home', username: username });
@@ -34,7 +34,7 @@ app.get('/index1', (req, res) => {
 });
 
 app.get('/jsondata', async (req, res) => {
-    const dataUrl = 'https://159.100.9.179:4000/products.json'; 
+    const dataUrl = 'http://159.100.9.179:4000/products.json'; 
     try {
       const response = await axios.get(dataUrl);
       const jsonData = response.data;
@@ -57,7 +57,7 @@ app.get('/checkout/:id', async (req, res) => {
   const id =parseInt( req.params.id);
   console.log(id);
   try {
-    const response = await axios.get('https://159.100.9.179:4000/jsondata');
+    const response = await axios.get('http://159.100.9.179:4000/jsondata');
     const records = response.data;
 
     // Find the item with the matching itemId
@@ -80,7 +80,7 @@ app.get('/cartitem/:id/:user', async (req, res) => {
   const user= parseInt(req.params.user)
   console.log(id);
   try {
-    const response = await axios.get('https://159.100.9.179:4000/jsondata');
+    const response = await axios.get('http://159.100.9.179:4000/jsondata');
     const records = response.data;
 
     // Find the item with the matching itemId

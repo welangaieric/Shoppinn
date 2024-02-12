@@ -2,7 +2,7 @@
 
 
   $(document).ready(function () {
-    const serverUrl = 'https://159.100.9.179:4000'
+    const serverUrl = 'http://159.100.9.179:4000'
     const cartItem=[]
     if($('#fixed-header')){
       window.onscroll = function() {
